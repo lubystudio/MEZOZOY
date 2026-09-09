@@ -86,11 +86,11 @@ inline void DrawIcon(HDC dc, Icon icon, RECT r, COLORREF color) {
 inline Icon CaptionIcon(const std::wstring& text) {
     if (text.empty()) return Icon::Document;
     switch(text[0]) {
-    case L'♟': return Icon::Character; case L'⌂': return Icon::Location;
-    case L'◈': return Icon::World; case L'▧': return Icon::Reference;
-    case L'□': return Icon::Folder; case L'♜': return Icon::History;
-    case L'☷': case L'☰': return Icon::Details; case L'♨': return Icon::Heart;
-    case L'●': return Icon::Light; case L'✎': return Icon::Pen;
+    case L'\u265F': return Icon::Character; case L'\u2302': return Icon::Location;
+    case L'\u25C8': return Icon::World; case L'\u25A7': return Icon::Reference;
+    case L'\u25A1': return Icon::Folder; case L'\u265C': return Icon::History;
+    case L'\u2637': case L'\u2630': return Icon::Details; case L'\u2668': return Icon::Heart;
+    case L'\u25CF': return Icon::Light; case L'\u270E': return Icon::Pen;
     default: return Icon::Document;
     }
 }
