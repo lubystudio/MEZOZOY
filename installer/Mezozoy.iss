@@ -1,5 +1,5 @@
 #define MyAppName "Mezozoy"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Luby Studio"
 #define MyAppExeName "Mezozoy.exe"
 
@@ -9,7 +9,7 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-VersionInfoVersion=1.0.0.0
+VersionInfoVersion=1.0.1.0
 VersionInfoCompany={#MyAppPublisher}
 VersionInfoDescription=Установщик сценарного редактора Mezozoy
 DefaultDirName={localappdata}\Programs\{#MyAppName}

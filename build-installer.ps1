@@ -2,6 +2,10 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $distDir = Join-Path $projectRoot 'dist'
 $outputDir = Join-Path $projectRoot 'output'
+$versionSource = Get-Content -LiteralPath (Join-Path $projectRoot 'src\core\AppVersion.h') -Raw
+$versionMatch = [regex]::Match($versionSource, 'AppVersion\[\]\s*=\s*L"([^"]+)"')
+if (-not $versionMatch.Success) { throw 'Cannot read AppVersion from src\core\AppVersion.h' }
+$version = $versionMatch.Groups[1].Value
 $isccCandidates = @(
     (Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 6\ISCC.exe'),
     'C:\Program Files (x86)\Inno Setup 6\ISCC.exe',
@@ -18,7 +22,7 @@ Copy-Item -LiteralPath (Join-Path $projectRoot 'Mezozoy.exe') -Destination (Join
 & $iscc (Join-Path $projectRoot 'installer\Mezozoy.iss')
 if ($LASTEXITCODE -ne 0) { throw 'Installer build failed' }
 
-$setup = Join-Path $outputDir 'Mezozoy-1.0.0-Setup.exe'
-$portable = Join-Path $outputDir 'Mezozoy-1.0.0-Portable.zip'
+$setup = Join-Path $outputDir "Mezozoy-$version-Setup.exe"
+$portable = Join-Path $outputDir "Mezozoy-$version-Portable.zip"
 Compress-Archive -Path (Join-Path $distDir 'Mezozoy.exe'),(Join-Path $projectRoot 'README.md'),(Join-Path $projectRoot 'LICENSE') -DestinationPath $portable -Force
 Get-FileHash -Algorithm SHA256 -LiteralPath $setup,$portable | Format-Table Path,Hash
