@@ -1,0 +1,33 @@
+# Build products
+/build/
+/dist/
+/output/
+/test-results/
+/.toolchain/
+/*.exe
+/*.zip
+/*.log
+
+# User data and generated projects
+/Mezozoy/
+*.autosave.mzoy
+*.mzoy.bak
+**/Mezozoy Backups/
+/tests/character-smoke-project.mzoy
+/tests/gui-smoke-project.mzoy
+/tests/recovery-smoke.mzoy
+/tests/screenplay-workflow.mzoy
+/tests/window-move-input.mzoy
+
+# Generated smoke-test images
+/smoke-*.png
+/smoke-*.txt
+
+# IDE and operating system
+/.vs/
+/.vscode/
+/.idea/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
