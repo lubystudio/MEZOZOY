@@ -15,6 +15,9 @@ target_link_libraries(Mezozoy PRIVATE
 )
 if(MINGW)
   target_link_options(Mezozoy PRIVATE -municode -static -static-libgcc -static-libstdc++)
+elseif(MSVC)
+  # Mezozoy.rc already embeds the application manifest as resource 1.
+  target_link_options(Mezozoy PRIVATE /MANIFEST:NO)
 endif()
 
 add_executable(MezozoyCaptureWindow EXCLUDE_FROM_ALL tests/capture-window.cpp)
